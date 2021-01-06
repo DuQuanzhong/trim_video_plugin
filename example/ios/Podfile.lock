@@ -1,0 +1,59 @@
+PODS:
+  - camera_album (0.0.1):
+    - Flutter
+    - MBProgressHUD (~> 1.2.0)
+  - Flutter (1.0.0)
+  - gallery_saver (0.0.1):
+    - Flutter
+  - image_picker (0.0.1):
+    - Flutter
+  - MBProgressHUD (1.2.0)
+  - path_provider (0.0.1):
+    - Flutter
+  - trim_video_plugin (0.0.1):
+    - Flutter
+  - video_player (0.0.1):
+    - Flutter
+
+DEPENDENCIES:
+  - camera_album (from `.symlinks/plugins/camera_album/ios`)
+  - Flutter (from `Flutter`)
+  - gallery_saver (from `.symlinks/plugins/gallery_saver/ios`)
+  - image_picker (from `.symlinks/plugins/image_picker/ios`)
+  - path_provider (from `.symlinks/plugins/path_provider/ios`)
+  - trim_video_plugin (from `.symlinks/plugins/trim_video_plugin/ios`)
+  - video_player (from `.symlinks/plugins/video_player/ios`)
+
+SPEC REPOS:
+  trunk:
+    - MBProgressHUD
+
+EXTERNAL SOURCES:
+  camera_album:
+    :path: ".symlinks/plugins/camera_album/ios"
+  Flutter:
+    :path: Flutter
+  gallery_saver:
+    :path: ".symlinks/plugins/gallery_saver/ios"
+  image_picker:
+    :path: ".symlinks/plugins/image_picker/ios"
+  path_provider:
+    :path: ".symlinks/plugins/path_provider/ios"
+  trim_video_plugin:
+    :path: ".symlinks/plugins/trim_video_plugin/ios"
+  video_player:
+    :path: ".symlinks/plugins/video_player/ios"
+
+SPEC CHECKSUMS:
+  camera_album: 030f37a5d18eaae07cda388675440fdfe680a11c
+  Flutter: 0e3d915762c693b495b44d77113d4970485de6ec
+  gallery_saver: 9fc173c9f4fcc48af53b2a9ebea1b643255be542
+  image_picker: 9c3312491f862b28d21ecd8fdf0ee14e601b3f09
+  MBProgressHUD: 3ee5efcc380f6a79a7cc9b363dd669c5e1ae7406
+  path_provider: abfe2b5c733d04e238b0d8691db0cfd63a27a93c
+  trim_video_plugin: fc76e2c80e4e8dc93564ad8cdf2ed664295a31e7
+  video_player: 9cc823b1d9da7e8427ee591e8438bfbcde500e6e
+
+PODFILE CHECKSUM: 3dffd8c48b531d21ec0ec153c22dc8e3a6223bc9
+
+COCOAPODS: 1.10.0

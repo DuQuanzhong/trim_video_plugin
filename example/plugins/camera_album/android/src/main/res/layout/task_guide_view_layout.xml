@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:background="@android:color/white"
+    android:clickable="true">
+
+    <!--关闭按钮-->
+    <LinearLayout
+        android:id="@+id/task_guide_tip_icon_close"
+        android:layout_width="48dp"
+        android:layout_height="48dp"
+        android:layout_alignParentRight="true"
+        android:gravity="center"
+        android:layout_gravity="right|center">
+
+        <ImageView
+            android:layout_width="20dp"
+            android:layout_height="15dp"
+            android:scaleType="centerInside"
+            android:src="@drawable/enhance_guide_close_icon_native"/>
+
+    </LinearLayout>
+
+<!--  banner-->
+    <com.zhpan.bannerview.BannerViewPager
+        android:id="@+id/task_guide_banner"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        app:bvp_indicator_normal_color="#1f000000"
+        app:bvp_indicator_checked_color="#45000000"
+        app:bvp_auto_play="false"
+        app:bvp_can_loop="false"
+        app:bvp_indicator_style="circle"
+        app:bvp_indicator_slide_mode="worm"
+        app:bvp_page_style="multi_page_scale"/>
+
+
+</LinearLayout>
