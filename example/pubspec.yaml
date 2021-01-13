@@ -21,8 +21,6 @@ dependencies:
   # 视频播放器
   video_player: 1.0.1
 
-  image_picker: 0.6.7+17
-
   trim_video_plugin:
     # When depending on this package from a real application you should use:
     #   trim_video_plugin: ^x.y.z

@@ -1,9 +1,5 @@
-import 'dart:typed_data';
-
 import 'package:flutter/material.dart';
 import 'dart:async';
-
-import 'package:image_picker/image_picker.dart';
 
 import 'package:camera_album/camera_album.dart';
 import 'video_edit_page.dart';
@@ -25,7 +21,6 @@ class _MyAppState extends State<MyApp> {
     );
   }
 
-
 }
 
 
@@ -36,8 +31,6 @@ class CheckVideoPage extends StatefulWidget {
 
 class _CheckVideoPageState extends State<CheckVideoPage> {
 
-  ImagePicker picker = ImagePicker();
-
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -45,31 +38,18 @@ class _CheckVideoPageState extends State<CheckVideoPage> {
         title: const Text('Plugin example app'),
       ),
       body: Center(
-        child: InkWell(
-          onTap: () {
-            getVideo();
-          },
-          child: Text('选取视频'),
-        ),
+        child: RaisedButton(child: Text('选择视频') ,onPressed: (){
+          getVideo();
+        },),
       ),
     );
   }
 
   Future getVideo() async {
 
-    // PickedFile videoFile = await picker.getVideo(source: ImageSource.gallery);
-    // if (videoFile != null) {
-    //   print('视频路径${videoFile.path}');
-    //   Navigator.push(context, MaterialPageRoute(builder: (context) {
-    //     return VideoEditPage(
-    //       videoPath: videoFile.path,
-    //     );
-    //   }));
-    // }
-
     CameraAlbum.openAlbum(
         config: CameraAlbumConfig(
-            title: 'jjjj',
+            title: '选择视频',
             inType: 'video',
             firstCamera: false,
             showBottomCamera: false,
