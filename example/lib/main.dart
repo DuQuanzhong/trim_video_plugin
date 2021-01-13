@@ -5,6 +5,7 @@ import 'dart:async';
 
 import 'package:image_picker/image_picker.dart';
 
+import 'package:camera_album/camera_album.dart';
 import 'video_edit_page.dart';
 void main() {
   runApp(MyApp());
@@ -55,13 +56,37 @@ class _CheckVideoPageState extends State<CheckVideoPage> {
   }
 
   Future getVideo() async {
-    PickedFile videoFile = await picker.getVideo(source: ImageSource.gallery);
-    if (videoFile != null) {
-      Navigator.push(context, MaterialPageRoute(builder: (context) {
-        return VideoEditPage(
-          videoPath: videoFile.path,
-        );
-      }));
-    }
+
+    // PickedFile videoFile = await picker.getVideo(source: ImageSource.gallery);
+    // if (videoFile != null) {
+    //   print('视频路径${videoFile.path}');
+    //   Navigator.push(context, MaterialPageRoute(builder: (context) {
+    //     return VideoEditPage(
+    //       videoPath: videoFile.path,
+    //     );
+    //   }));
+    // }
+
+    CameraAlbum.openAlbum(
+        config: CameraAlbumConfig(
+            title: 'jjjj',
+            inType: 'video',
+            firstCamera: false,
+            showBottomCamera: false,
+            showGridCamera: false,
+            showAlbum: true,
+            isMulti: false,
+            multiCount: 5,
+            cute: false),
+        context: context,
+        callback: (backs) async {
+          var uploadImage = backs.paths[0];
+          Navigator.push(context, MaterialPageRoute(builder: (context) {
+            return VideoEditPage(
+              videoPath: uploadImage,
+            );
+          }));
+        });
+
   }
 }
