@@ -22,7 +22,7 @@ class TrimVideoPlugin {
   Future getVideoThumbnails(String videoPath, {int count = 8, Function(double duration, List thumbnailsDataList) callback}) async {
     var result = await _invokeMethod("videoThumbnails", paras: {"videoPath": videoPath, 'count': count});
     ///  视屏时长
-    double duration = result['duration'];
+    var duration = result['duration'];
     ///  视频缩略图
     List thumbnailsDataList = result["thumbnails"];
     callback(duration, thumbnailsDataList);

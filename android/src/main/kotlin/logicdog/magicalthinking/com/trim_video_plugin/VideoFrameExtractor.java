@@ -33,7 +33,6 @@ import java.util.Map;
 
 import static logicdog.magicalthinking.com.trim_video_plugin.Util_extKt.getVideoDuration;
 
-
 /**
  * 目前只支持本地mp4格式文件
  */

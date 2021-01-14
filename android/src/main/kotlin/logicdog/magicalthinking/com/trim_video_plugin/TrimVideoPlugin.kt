@@ -4,6 +4,8 @@ import android.app.Activity
 import android.content.Context
 import android.net.Uri
 import android.os.Environment
+import android.os.Handler
+import android.os.Looper
 import android.util.Log
 import androidx.annotation.NonNull
 import com.daasuu.mp4compose.composer.Mp4Composer
@@ -52,6 +54,10 @@ class TrimVideoPlugin : FlutterPlugin, MethodCallHandler, ActivityAware {
                 Log.e("视频时长", "$dur")
 
                 Thread {
+
+                    var handler = Handler(Looper.getMainLooper())
+                    var thumbs = ArrayList<String>()
+
                     var thumbsUtil = VideoFrameExtractor(con, Uri.fromFile(File(path)))
                     thumbsUtil.getThumbnail(1000, dur) { bitmap, index ->
 
@@ -59,6 +65,15 @@ class TrimVideoPlugin : FlutterPlugin, MethodCallHandler, ActivityAware {
                             var fileName = con.externalCacheDir?.absolutePath + "thumbnail_" + index + ".jpg"
                             writeToFile(bitmap, fileName)
                             Log.e("帧$index", "$fileName")
+                            thumbs.add(fileName)
+                            var count = Math.ceil(((dur/1000).toDouble())).toInt()
+                            if (index == count-1){
+                                handler.post{
+                                    var back = hashMapOf("duration" to dur.toDouble(), "thumbnails" to thumbs)
+                                    result.success(back)
+                                }
+                            }
+
                         }
 
                     }
@@ -71,8 +86,10 @@ class TrimVideoPlugin : FlutterPlugin, MethodCallHandler, ActivityAware {
             var path = call?.argument<String>("videoPath") ?: ""
             Log.e("视频信息：", "$path")
 
+            var fileName = con.externalCacheDir?.absolutePath + "thumbnail_" + ".mp4"
+
             if (path != null) {
-                Mp4Composer(path, "${getDiskCachePath(con)}/fengkun_test.mp4")
+                Mp4Composer(path, fileName)
                         .trim(2000L, 4000L)
                         .size(540, 960)
                         .listener(object : Mp4Composer.Listener {
@@ -100,18 +117,6 @@ class TrimVideoPlugin : FlutterPlugin, MethodCallHandler, ActivityAware {
                         })
                         .start()
             }
-        }
-    }
-
-    /**
-     * 缓存目录
-     */
-    fun getDiskCachePath(context: Context): String? {
-        return if (Environment.MEDIA_MOUNTED == Environment.getExternalStorageState()
-                || !Environment.isExternalStorageRemovable()) {
-            context.externalCacheDir?.path
-        } else {
-            context.cacheDir?.path
         }
     }
 

@@ -1,3 +1,5 @@
+import 'dart:io';
+
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:trim_video_plugin/nwdn_trim_video.dart';
@@ -61,10 +63,10 @@ class _VideoBottomThumbnailsWidgetState extends State<VideoBottomThumbnailsWidge
             return Container(
               width: imgItemWidth,
               height: imgItemWidth * 1.5,
-              child: Image.memory(
+              child: Platform.isIOS?Image.memory(
                 imgDataList[index],
                 fit: BoxFit.cover,
-              ),
+              ):Image.file(File(imgDataList[index])),
             );
           },
           itemCount: imgDataList?.length ?? 0,

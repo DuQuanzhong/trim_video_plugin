@@ -41,7 +41,9 @@ fun getVideoDuration(context: Context, mediaPath: String): Long {
     return 0
 }
 
-
+/**
+ * 保存截图
+ */
 fun writeToFile(bitmap: Bitmap, outBitmap: String, quality: Int = 50): Boolean {
     var success = false
     var out: FileOutputStream? = null
